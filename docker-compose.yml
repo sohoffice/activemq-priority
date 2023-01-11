@@ -1,0 +1,14 @@
+version: "3.8"
+services:
+  amq:
+    container_name: demo-activemq
+    image: "linksyscloud/activemq:5.16.5.16"
+    ports:
+      - "8161:8161"
+      - "61616:61616"
+
+# end of cloud-service
+#volumes:
+#  moab-pg-data:
+#  moab-redis-data:
+#  moab-dynamodb-data:

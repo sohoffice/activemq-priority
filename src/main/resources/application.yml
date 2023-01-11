@@ -1,0 +1,8 @@
+spring:
+  activemq:
+    in-memory: false
+  jms:
+    cache.session-cache-size: 10
+    listener:
+      concurrency: 5
+      max-concurrency: 20
