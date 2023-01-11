@@ -20,13 +20,13 @@ class Producer(val jmsTemplate: JmsTemplate) {
         val highPriorityPool = Executors.newFixedThreadPool(5) as ThreadPoolExecutor
         for (i in 1..10) {
             for (k in 1..100) {
+                val ts = System.currentTimeMillis()
                 lowPriorityPool.submit {
-                    val ts = System.currentTimeMillis()
                     this.sendMessage("$ts,LOW", 0)
                 }
             }
+            val ts = System.currentTimeMillis()
             highPriorityPool.submit {
-                val ts = System.currentTimeMillis()
                 this.sendMessage("$ts,HIGH", 9)
             }
             // logger.info("Pool, ${lowPriorityPool.activeCount}/${lowPriorityPool.poolSize}, ${highPriorityPool.activeCount}/${highPriorityPool.poolSize}")
